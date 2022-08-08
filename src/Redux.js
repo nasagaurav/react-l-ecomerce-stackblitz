@@ -13,6 +13,7 @@ const intialState = {
 };
 
 function reducer(state = intialState, action) {
+  console.log(action);
   switch (action.type) {
     case 'products':
       return { ...state, products: action.payload };
