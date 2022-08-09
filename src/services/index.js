@@ -9,6 +9,7 @@ export async function getProducts() {
     .then((d) => d.data);
   return result;
 }
+
 export async function getTags() {
   const url = `${base}/tags`;
   const result = await axios
@@ -100,5 +101,11 @@ export async function getLogin(payload) {
       }
     });
 
+  return result;
+}
+
+export async function signup(payload) {
+  const url = `${base}/signup`;
+  const result = await axios.post(url, payload).then((res) => res.data);
   return result;
 }
