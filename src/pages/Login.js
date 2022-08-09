@@ -15,7 +15,13 @@ function Login(props) {
     console.log(email, password);
 
     getLogin(payload).then((d) => {
-      console.log('after login', d);
+      if (d.status) {
+        // loggedin
+        dispatch({ type: 'login', payload: d });
+        // it will send {token:"...",user:"nasa",status:true}
+      } else {
+        // failed
+      }
     });
   };
 
