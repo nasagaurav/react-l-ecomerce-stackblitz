@@ -4,8 +4,8 @@ import { createStore } from 'redux';
 import App from './App';
 const intialState = {
   products: [],
-  cart: [],
   tags: [],
+  cart: [],
   orders: [],
   loggedin: false,
   user: null,
@@ -24,7 +24,12 @@ function reducer(state = intialState, action) {
     case 'orders':
       return { ...state, orders: action.payload };
     case 'login':
-      return { ...state, loggedin: true };
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        loggedin: action.payload.status,
+      };
     case 'logout':
       return { ...state, loggedin: false };
     default:

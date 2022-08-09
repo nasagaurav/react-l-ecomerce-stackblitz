@@ -43,3 +43,20 @@ export async function getOrders(token) {
     .then((d) => (d.status ? d.data : []));
   return result;
 }
+
+export async function getLogin(payload) {
+  const url = `${base}/login`;
+  const result = await axios
+    .post(url, payload)
+    .then((res) => res.data)
+    .then((d) => {
+      if (d.status) {
+        localStorage.setItem('token', d.token);
+        return { token: d.token, user: d.data.name, status: true };
+      } else {
+        return { token: '', user: null, status: false };
+      }
+    });
+
+  return result;
+}

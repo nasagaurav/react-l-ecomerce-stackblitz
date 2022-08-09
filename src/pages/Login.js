@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { getLogin } from '../services';
 function Login(props) {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
@@ -10,8 +11,12 @@ function Login(props) {
   const hs = () => {
     const email = r1.current.value;
     const password = r2.current.value;
-
+    const payload = { email, password };
     console.log(email, password);
+
+    getLogin(payload).then((d) => {
+      console.log('after login', d);
+    });
   };
 
   return (
