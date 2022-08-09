@@ -52,6 +52,7 @@ export async function getLogin(payload) {
     .then((d) => {
       if (d.status) {
         localStorage.setItem('token', d.token);
+        localStorage.setItem('user', d.data.name);
         return { token: d.token, user: d.data.name, status: true };
       } else {
         return { token: '', user: null, status: false };
