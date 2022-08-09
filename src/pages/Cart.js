@@ -8,7 +8,8 @@ function Cart(props) {
 
   const remove = (cart_id) => {
     removeFromCart(cart_id, token).then((d) => {
-      console.log('removeFromCart', d);
+      // console.log("removeFromCart",d)
+      dispatch({ type: 'removeFromCart', payload: d });
     });
   };
 
