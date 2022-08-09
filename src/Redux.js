@@ -35,6 +35,8 @@ function reducer(state = intialState, action) {
 
     case 'add-to-cart':
       return { ...state, cart: action.payload };
+    case 'removeFromCart':
+      return { ...state, cart: action.payload };
 
     default:
       return state;

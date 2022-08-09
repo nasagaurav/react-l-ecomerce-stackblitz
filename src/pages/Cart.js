@@ -1,9 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../services';
 function Cart(props) {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
-  const { cart } = state;
+  const { cart, token } = state;
+
+  const remove = (cart_id) => {
+    removeFromCart(cart_id, token).then((d) => {
+      console.log('removeFromCart', d);
+    });
+  };
+
   return (
     <div>
       <h1>My Cart ({cart.length}) </h1>
@@ -26,7 +34,7 @@ function Cart(props) {
               </td>
               <td>{x.new}</td>
               <td>{x.qty}</td>
-              <td>remove</td>
+              <td onClick={() => remove(x.cid)}>remove</td>
             </tr>
           ))}
         </tbody>

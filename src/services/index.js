@@ -43,6 +43,20 @@ export async function addToCart(pid, token) {
     .then((d) => (d.status ? d.data : []));
   return result;
 }
+export async function removeFromCart(cid, token) {
+  const url = `${base}/removeFromCart/${cid}`;
+  const headers = {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  };
+  const result = await axios
+    .get(url, headers)
+    .then((res) => res.data)
+    .then((d) => (d.status ? d.data : []));
+  return result;
+}
+
 export async function getOrders(token) {
   const url = `${base}/orders`;
   const headers = {
