@@ -32,6 +32,10 @@ function reducer(state = intialState, action) {
       };
     case 'logout':
       return { ...state, loggedin: false };
+
+    case 'add-to-cart':
+      return { ...state, cart: action.payload };
+
     default:
       return state;
   }

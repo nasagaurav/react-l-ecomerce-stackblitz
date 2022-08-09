@@ -19,7 +19,8 @@ function ProductCard(props) {
 
   const atc = () => {
     addToCart(props._id, token).then((d) => {
-      console.log('after add to cart', d);
+      // console.log('after add to cart', d);
+      dispatch({ type: 'add-to-cart', payload: d });
     });
   };
 
