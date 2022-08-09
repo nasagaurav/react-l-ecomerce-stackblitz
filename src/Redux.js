@@ -7,9 +7,9 @@ const intialState = {
   tags: [],
   cart: [],
   orders: [],
-  loggedin: false,
-  user: null,
-  token: '',
+  loggedin: !!localStorage.getItem('token'),
+  user: localStorage.getItem('user'),
+  token: localStorage.getItem('token'),
 };
 
 function reducer(state = intialState, action) {
