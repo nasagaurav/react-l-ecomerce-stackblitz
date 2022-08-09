@@ -30,6 +30,20 @@ export async function getCart(token) {
     .then((d) => (d.status ? d.data : []));
   return result;
 }
+export async function changePassword(password, token) {
+  const url = `${base}/profile`;
+  const headers = {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  };
+  const result = await axios
+    .patch(url, headers, { field: 'password', value: password })
+    .then((res) => res.data)
+    .then((d) => (d.status ? d.data : []));
+  return result;
+}
+
 export async function addToCart(pid, token) {
   const url = `${base}/addToCart/${pid}`;
   const headers = {
