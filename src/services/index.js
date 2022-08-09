@@ -27,7 +27,7 @@ export async function getCart(token) {
   const result = await axios
     .get(url, headers)
     .then((res) => res.data)
-    .then((d) => d.data);
+    .then((d) => (d.status ? d.data : []));
   return result;
 }
 export async function getOrders(token) {
@@ -40,6 +40,6 @@ export async function getOrders(token) {
   const result = await axios
     .get(url, headers)
     .then((res) => res.data)
-    .then((d) => d.data);
+    .then((d) => (d.status ? d.data : []));
   return result;
 }
