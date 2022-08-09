@@ -31,7 +31,7 @@ function reducer(state = intialState, action) {
         loggedin: action.payload.status,
       };
     case 'logout':
-      return { ...state, loggedin: false };
+      return { ...state, loggedin: false, user: null };
 
     case 'add-to-cart':
       return { ...state, cart: action.payload };
