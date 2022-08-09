@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, getTags, getCart, getOrders } from './services';
 
 import Header from './components/Header';
@@ -16,13 +16,14 @@ import ErrorPage from './pages/ErrorPage';
 
 function App(props) {
   const dispatch = useDispatch();
+  const state = useSelector((s) => s);
+  const { token, loggedin } = state;
+
   const loadAll = () => {
     getProducts().then((d) => dispatch({ type: 'products', payload: d }));
     getTags().then((d) => dispatch({ type: 'tags', payload: d }));
-    getCart('myfaketoken').then((d) => dispatch({ type: 'cart', payload: d }));
-    getOrders('myfaketoken').then((d) =>
-      dispatch({ type: 'orders', payload: d })
-    );
+    getCart(token).then((d) => dispatch({ type: 'cart', payload: d }));
+    getOrders(token).then((d) => dispatch({ type: 'orders', payload: d }));
   };
 
   useEffect(loadAll, []);
