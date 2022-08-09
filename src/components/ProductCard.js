@@ -27,7 +27,7 @@ function ProductCard(props) {
       <div>{props.rating}</div>
       <div>{props.discount}</div>
       <div>{props.tags}</div>
-      <div></div>
+      {loggedin && <div>add to cart</div>}
     </div>
   );
 }
