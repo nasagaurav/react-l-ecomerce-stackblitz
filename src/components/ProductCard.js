@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { addToCart } from '../services';
 function ProductCard(props) {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
 
-  const { loggedin } = state;
+  const { loggedin, token } = state;
 
   // props._id,
   // props._title,
@@ -17,6 +17,12 @@ function ProductCard(props) {
   // props.tags,
   // props.image,
 
+  const atc = () => {
+    addToCart(props._id, token).then((d) => {
+      console.log('after add to cart', d);
+    });
+  };
+
   return (
     <div>
       <div>
@@ -27,7 +33,7 @@ function ProductCard(props) {
       <div>{props.rating}</div>
       <div>{props.discount}</div>
       <div>{props.tags}</div>
-      {loggedin && <div>add to cart</div>}
+      {loggedin && <div onClick={atc}>add to cart</div>}
     </div>
   );
 }
