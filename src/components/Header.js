@@ -2,6 +2,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import {useNavigate} from 'react-router-dom'
 // header code
 
 import AppBar from "@mui/material/AppBar";
@@ -19,6 +20,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
 const Header = () => {
+  const navigate=useNavigate()
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
 
@@ -53,6 +55,12 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
+  const hc=x=>{
+    // alert(x)
+    // console.log(x)
+    const path=x.split(" ")[0]
+    navigate(`/${path}`)
+  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -106,7 +114,7 @@ const Header = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={()=>hc(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -135,7 +143,7 @@ const Header = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>hc(page)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
@@ -166,7 +174,7 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting}  onClick={()=>hc(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
