@@ -29,7 +29,7 @@ function Cart(props) {
     <Container>
       <br/>
       <br/>
-      <Alert severity="success">This is a success alert — check it out!</Alert>
+      <Alert severity="success">My Total Cart — {cart.length}</Alert>
       <br/>
 
       <TableContainer component={Paper}>
