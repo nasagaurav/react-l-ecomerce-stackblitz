@@ -1,8 +1,18 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../services';
-import Grid from '@mui/material/Grid'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../services";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Rating from "@mui/material/Rating";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 function ProductCard(props) {
+  const [value, setValue] = React.useState(2);
+
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
 
@@ -21,22 +31,38 @@ function ProductCard(props) {
   const atc = () => {
     addToCart(props._id, token).then((d) => {
       // console.log('after add to cart', d);
-      dispatch({ type: 'add-to-cart', payload: d });
+      dispatch({ type: "add-to-cart", payload: d });
     });
   };
 
   return (
     <Grid item xs={2}>
-      <div>
-        <img width="100" height="100" src={props.image} />
-      </div>
-      <div>{props.title}</div>
-      <div>{props.new}</div>
-      <div>{props.rating}</div>
-      <div>{props.discount}</div>
-      <div>{props.tags}</div>
-      {loggedin && <div onClick={atc}>add to cart</div>}
-   </Grid>
+      <Card sx={{ maxWidth: 150 }}>
+        <div>
+          <img width="150" height="150" src={props.image} />
+        </div>
+        <CardContent>
+          <Typography>{props.title}</Typography>
+          <Typography>{props.new}</Typography>
+          <Typography>
+            <Rating
+              name="simple-controlled"
+              value={props.rating}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            />
+          </Typography>
+          <Typography>{props.discount}</Typography>
+          <Typography>{props.tags}</Typography>
+          {loggedin && (
+            <Button variant="contained" onClick={atc}>
+              <ShoppingCartIcon />
+            </Button>
+          )}
+        </CardContent>
+      </Card>
+    </Grid>
   );
 }
 
