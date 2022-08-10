@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../services';
+import Grid from '@mui/material/Grid'
 function ProductCard(props) {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function ProductCard(props) {
   };
 
   return (
-    <div>
+    <Grid item xs={2}>
       <div>
         <img width="100" height="100" src={props.image} />
       </div>
@@ -35,7 +36,7 @@ function ProductCard(props) {
       <div>{props.discount}</div>
       <div>{props.tags}</div>
       {loggedin && <div onClick={atc}>add to cart</div>}
-    </div>
+   </Grid>
   );
 }
 

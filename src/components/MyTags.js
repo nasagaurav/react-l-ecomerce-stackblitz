@@ -1,7 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import Container from "@mui/material/Container";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,7 +11,7 @@ function MyTags(props) {
   const { tags } = state;
 
   return (
-    <Container>
+    <div>
       <br />
       <ButtonGroup
         variant="contained"
@@ -25,7 +24,7 @@ function MyTags(props) {
         ))}
       </ButtonGroup>
       <br />
-    </Container>
+    </div>
   );
 }
 export default MyTags;
