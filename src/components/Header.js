@@ -70,7 +70,7 @@ const Header = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            onClick={()=>hc(" ")}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
