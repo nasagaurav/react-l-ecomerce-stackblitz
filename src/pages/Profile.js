@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changePassword } from '../services';
+import Button from '@mui/material/Button'
 function Profile(props) {
   const ref = useRef();
   const state = useSelector((s) => s);
@@ -16,10 +17,10 @@ function Profile(props) {
   };
 
   return (
-    <div>
+    <div className='login'>
       <h1>My Profile</h1>
       <input placeholder="new password" ref={ref} />
-      <button onClick={cp}>update password</button>
+      <Button variant="contained" onClick={cp}>update password</Button>
     </div>
   );
 }

@@ -3,10 +3,11 @@ body {
 }
 
 .login {
-box-shadow: 0 10px 10px black;
-width:30%;
-margin:5% auto;
-padding:2%;
+  box-shadow: 0 10px 10px black;
+  width: 30%;
+  margin: 5% auto;
+  padding: 2%;
+  text-align: center;
 }
 .login h1 {
   text-align: center;
@@ -16,6 +17,5 @@ padding:2%;
   padding: 10px;
   width: 100%;
   margin-bottom: 10px;
-  border:1px solid grey;
+  border: 1px solid grey;
 }
-
