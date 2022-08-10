@@ -10,15 +10,17 @@ const intialState = {
   loggedin: !!localStorage.getItem('token'),
   user: localStorage.getItem('user'),
   token: localStorage.getItem('token'),
+  tagsLoaded:false,
+  productsLoaded:false,
 };
 
 function reducer(state = intialState, action) {
   console.log(action);
   switch (action.type) {
     case 'products':
-      return { ...state, products: action.payload };
+      return { ...state, products: action.payload ,productsLoaded:true};
     case 'tags':
-      return { ...state, tags: action.payload };
+      return { ...state, tags: action.payload ,tagsLoaded:true};
     case 'cart':
       return { ...state, cart: action.payload };
     case 'orders':
