@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLogin } from '../services';
+import Button from '@mui/material/Button'
 function Login(props) {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
@@ -26,11 +27,11 @@ function Login(props) {
   };
 
   return (
-    <div>
+    <div className='login'>
       <h1>Login</h1>
       <input placeholder="email" ref={r1} />
       <input placeholder="password" ref={r2} />
-      <button onClick={hs}>login</button>
+      <Button variant="contained" onClick={hs}>login</Button>
     </div>
   );
 }

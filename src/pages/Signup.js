@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signup } from '../services';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button'
 function Signup(props) {
   const navigate = useNavigate();
   const r1 = useRef();
@@ -30,13 +31,13 @@ function Signup(props) {
   };
 
   return (
-    <div>
+    <div className='login'>
       <h1>Signup</h1>
       <input ref={r1} placeholder="name" />
       <input ref={r2} placeholder="email" />
       <input ref={r3} placeholder="phone" />
       <input ref={r4} placeholder="password" />
-      <button onClick={hs}>signup</button>
+      <Button variant="contained" onClick={hs}>Signup</Button>
     </div>
   );
 }
